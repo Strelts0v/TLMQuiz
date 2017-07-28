@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">TLMQuiz</string>
+    <string name="question_text">Question</string>
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="incorrect_toast">Incorrect!</string>
+    <string name="correct_toast">Correct!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="previous_button">Previous</string>
+    <string name="next_button">Next</string>
+    <string name="cheat_button">Cheat!</string>
+    <string name="warning_text">Are you sure you wanna do this?</string>
+    <string name="show_button">Show answer</string>
+    <string name="judgment_toast">You are cheating!</string>
+
+    <!-- Questions -->
+    <string name="question_id_1">Do rich people think globally?</string>
+    <string name="question_id_2">Do poor people blame rich people?</string>
+    <string name="question_id_3">Do rich people can be stop by difficulties?</string>
+    <string name="question_id_4">Do poor people bless successful and famous people?</string>
+    <string name="title_activity_cheat">Cheat</string>
+</resources>
