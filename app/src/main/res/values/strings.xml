@@ -12,6 +12,7 @@
     <string name="warning_text">Are you sure you wanna do this?</string>
     <string name="show_button">Show answer</string>
     <string name="judgment_toast">You are cheating!</string>
+    <string name="android_sdk_version">Android SDK version</string>
 
     <!-- Questions -->
     <string name="question_id_1">Do rich people think globally?</string>
