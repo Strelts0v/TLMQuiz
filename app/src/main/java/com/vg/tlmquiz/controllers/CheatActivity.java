@@ -1,11 +1,15 @@
 package com.vg.tlmquiz.controllers;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import com.vg.tlmquiz.R;
@@ -21,6 +25,9 @@ public class CheatActivity extends AppCompatActivity {
 
     /** Object for representing answer on question */
     private TextView mAnswerTextView;
+
+    /** Object for representing version of Android SDK */
+    private TextView mAndroidSdkVersionTextView;
 
     /** Variable for storing answer on question */
     private boolean mIsAnswerTrue;
@@ -71,8 +78,34 @@ public class CheatActivity extends AppCompatActivity {
                     mAnswerTextView.setText(R.string.false_button);
                 }
                 setAnswerIsShownResult(true);
+
+                // Executing of this code is available only for API 21 and higher
+                // Animation of hiding mShowAnswerButton
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    int cx = mShowAnswerButton.getWidth() / 2;
+                    int cy = mShowAnswerButton.getHeight() / 2;
+                    float radius = mShowAnswerButton.getWidth();
+                    Animator anim = ViewAnimationUtils
+                            .createCircularReveal(mShowAnswerButton, cx, cy, radius, 0);
+                    anim.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            mAnswerTextView.setVisibility(View.VISIBLE);
+                            mShowAnswerButton.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                    anim.start();
+                } else {
+                    mAnswerTextView.setVisibility(View.VISIBLE);
+                    mShowAnswerButton.setVisibility(View.INVISIBLE);
+                }
             }
         });
+
+        // Showing Android SDK version
+        mAndroidSdkVersionTextView = (TextView) findViewById(R.id.android_sdk_version);
+        mAndroidSdkVersionTextView.append(" " + Build.VERSION.SDK_INT);
     }
 
     /**
